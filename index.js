@@ -19,11 +19,22 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
+// function myFunction() {
+//   document.getElementById("myDropdown").classList.toggle("show");
+// }
+
+
 function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+  var dropdown = document.getElementById("myDropdown");
+  if (dropdown.style.display === "block") {
+    dropdown.style.display = "none";
+  } else {
+    dropdown.style.display = "block";
+  }
 }
 
-// Close the dropdown if the user clicks outside of it
+
+
 window.onclick = function (event) {
   if (!event.target.matches(".dropbtn")) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
