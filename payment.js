@@ -1,14 +1,35 @@
-let ADD = JSON.parse(localStorage.getItem("address"));
-document.querySelector("#addnew").innerText = ADD;
+let deliveryAddress = JSON.parse(localStorage.getItem("address"));
+document.querySelector("#addnew").innerText = deliveryAddress;
 
-let account = [];
-let obj = {
-  card: 1224364860728496,
-  valid: "12/27",
-  cvv: 377,
-};
-account.push(obj);
-localStorage.setItem("ACCOUNT", JSON.stringify(account));
+let accountDetails = [
+  {
+    cardNumber: "1224364860728496",
+    validThru: "12/27",
+    cvv: "377",
+  },
+];
+localStorage.setItem("accountDetails", JSON.stringify(accountDetails));
+
+function handleCardPayment() {
+  let cardNumber = document.querySelector("#input1").value;
+  let validThru = document.querySelector("#valiD").value;
+  let cvv = document.querySelector("#cVV").value;
+
+  let storedAccounts = JSON.parse(localStorage.getItem("accountDetails"));
+  let validAccount = storedAccounts.find(
+    (account) =>
+      account.cardNumber === cardNumber &&
+      account.validThru === validThru &&
+      account.cvv === cvv
+  );
+
+  if (validAccount) {
+    alert("OTP sent successfully.");
+    window.location.replace("otp.html");
+  } else {
+    alert("Invalid card details.");
+  }
+}
 
 document.querySelector("#PAY").addEventListener("click", function () {
   let CARD = document.querySelector("#input1").value;
@@ -23,33 +44,55 @@ document.querySelector("#PAY").addEventListener("click", function () {
   }
 });
 
-document.querySelector("#bt").addEventListener("click", function () {
-  window.location.replace("address.html");
-});
-document.querySelector("#app").addEventListener("click", function () {
-  let sum = 0;
-  let sal = 0;
-  let INP = document.querySelector("#VAl").value;
-  if (INP == "big123") {
-    let final = 0;
-    let arr = JSON.parse(localStorage.getItem("TOTAL"));
-    for (let i = 0; i < arr.length; i++) {
-      final += arr[i];
-    }
-    sum = final - 0.2 * final;
-    sal = 0.2 * final;
-    document.querySelector("#BR").innerText = sum;
-    document.querySelector("#TR").innerText = sal.toFixed(2);
+
+function handleNetbankingPayment() {
+  alert("Redirecting to netbanking portal...");
+}
+document.querySelector("#netbankingBtn").addEventListener("click", handleNetbankingPayment);
+
+function handleUpiPayment() {
+  alert("Redirecting to UPI payment...");
+}
+
+document.querySelector("#upiBtn").addEventListener("click", handleUpiPayment);
+
+function handleWalletPayment() {
+  alert("Redirecting to wallet payment...");
+}
+
+document.querySelector("#walletBtn").addEventListener("click", handleWalletPayment);
+
+function handleCashOnDelivery() {
+  alert("Proceeding with Cash/Card on Delivery...");
+  window.location.replace("order_confirmation.html");
+}
+
+document.querySelector("#cashOnDeliveryBtn").addEventListener("click", handleCashOnDelivery);
+
+function applyVoucher() {
+  let voucherCode = document.querySelector("#VAl").value;
+  if (voucherCode === "big123") {
+    let totalPrice = parseFloat(document.querySelector("#PR").innerText);
+    let discountedPrice = totalPrice * 0.8;
+    let savings = totalPrice - discountedPrice;
+
+    document.querySelector("#BR").innerText = discountedPrice.toFixed(2);
+    document.querySelector("#TR").innerText = savings.toFixed(2);
+
     alert("Hurray..!! 20% discount applicable.");
   } else {
-    alert("Worng Code");
+    alert("Invalid voucher code.");
   }
-});
-
-let final = 0;
-let arr = JSON.parse(localStorage.getItem("TOTAL"));
-for (let i = 0; i < arr.length; i++) {
-  final += arr[i];
 }
-document.querySelector("#PR").innerText = final;
-document.querySelector("#BR").innerText = final;
+
+document.querySelector("#app").addEventListener("click", applyVoucher);
+
+let totalAmount = 0;
+let itemsInCart = JSON.parse(localStorage.getItem("TOTAL"));
+for (let itemPrice of itemsInCart) {
+  totalAmount += itemPrice;
+}
+document.querySelector("#PR").innerText = totalAmount.toFixed(2);
+document.querySelector("#BR").innerText = totalAmount.toFixed(2);
+
+

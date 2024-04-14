@@ -38,3 +38,53 @@ Git: Used for version control and collaboration, facilitating code management an
 ## Project Development
 The project was developed over a period of 16-17 days, during which extensive research, learning, and implementation were carried out. Resources such as MDN documentation, Google, and YouTube tutorials were leveraged to understand and implement various features and functionalities.
 
+## Sneap Peak of my project
+- **Langing Page**
+
+![Landing Page](./Readme%20images/Screenshot%20(128).png)
+
+- **Langing Page 2**
+
+![Landing Page](./Readme%20images/Screenshot%20(132).png)
+
+- **Login**
+
+![Login Page](./Readme%20images/Screenshot%20(129).png)
+
+- **Login OTP Verification**
+
+![Login OTP Verification](./Readme%20images/Screenshot%20(130).png)
+
+- **Sign-Up Page**
+
+![Sign Up Page](./Readme%20images/Screenshot%20(131).png)
+
+- **Best Selling Items**
+
+![Best Selling Items](./Readme%20images/Screenshot%20(133).png)
+
+- **User's Product Basket (Popup)**
+
+![User's Product Basket (Popup)](./Readme%20images/Screenshot%20(133).png)
+
+- **Checkout Page1**
+
+![Checkout Page](./Readme%20images/Screenshot%20(138).png)
+
+**Checkout Page2**
+
+![Checkout Page](./Readme%20images/Screenshot%20(139).png)
+
+- **Payment Page Part**
+
+![Payment Page Part 1](./Readme%20images/Screenshot%20(140).png)
+
+
+- **Payment OTP Page**
+
+![Payment OTP Page](./Readme%20images/Screenshot%20(140).png)
+
+- **Order Confirmation Page**
+
+
+
